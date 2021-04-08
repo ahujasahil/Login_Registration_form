@@ -1,0 +1,182 @@
+<html>
+
+<body >
+    <div class="back">
+        <div class="login-box regi-box" >
+            <h1>Registration</h1>
+            <div class="col-12">
+                <div class="tab">
+                    <span id="t1">
+                        <button (click)="LogSwitch() ">Login</button>
+                    </span>
+                    <span>
+                        <button (click)="RegisterSwitch()">Register</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-12 m-b-30">
+                <div class="row">
+                    <div class="line">
+                        <span class="or"></span>
+                    </div>
+                </div>
+            </div>
+            <form #RegForm="ngForm" (submit)="RegDetails(RegForm.value)" class="form-contact contact_form">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>First Name<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" name="Fname" value="FName" #FName="ngModel"
+                                pattern="^[A-Za-z]+([\ A-Za-z]+)*$" [class.is-invalid]="FName.invalid && FName.touched"
+                                type="text" placeholder="First Name" ngModel>
+                            <small [class.d-none]="FName.valid || FName.untouched" class="text-danger">First Name is
+                                required</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>Last Name<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" name="Lname" value="LName" #LName="ngModel"
+                                pattern="^[A-Za-z]+([\ A-Za-z]+)*$" [class.is-invalid]="LName.invalid && LName.touched"
+                                type="text" placeholder="Last Name" ngModel>
+                            <small [class.d-none]="LName.valid || LName.untouched" class="text-danger">Last Name is
+                                required</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>Email Address<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" name="Email" value="Email" #menEmailId="ngModel"
+                                pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                [class.is-invalid]="menEmailId.invalid && menEmailId.touched" type="text"
+                                placeholder="Email Address" ngModel>
+                            <div *ngIf="menEmailId.errors && (menEmailId.invalid && menEmailId.touched)">
+                                <small class="text-danger" *ngIf="menEmailId.errors.required">Email Is
+                                    Required</small>
+                                <small class="text-danger" *ngIf="menEmailId.errors.pattern">Please Enter
+                                    Valid
+                                    Email</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>Mobile Number<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" name="phone" value="MobNo." #MobNo="ngModel"
+                                pattern="^\d{10}$" [class.is-invalid]="MobNo.invalid && MobNo.touched" type="text"
+                                placeholder="Mobile No." ngModel>
+                            <small [class.d-none]="MobNo.valid || MobNo.untouched" class="text-danger">Mobile No. is
+                                required</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+        
+                        <div class="form-group m-b-25">
+                            <label>Post Code<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" name="Postalcode" value="postalcode." 
+                                #Post="ngModel" [class.is-invalid]="Post.invalid && Post.touched" type="text"
+                                placeholder="Post Code" ngModel>
+                            <small [class.d-none]="Post.valid || Post.untouched" class="text-danger">Post Code is
+                                required</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>
+                                Birth Day<span class="req-color">*</span>
+                            </label>
+                            <div class="col-12 p-0">
+                                <div class="row">
+                                    <div class="col-3 p-0">
+                                        <select required class="form-control select-field"  #day="ngModel" name="Day"
+                                            [class.is-invalid]="day.invalid && day.touched" ngModel>
+                                            <option value="" disabled>Day</option>
+                                            <option *ngFor="let Day of Days">{{Day}}</option>
+        
+                                        </select>
+                                        <small [class.d-none]="day.valid || day.untouched" class="text-danger">
+                                            Day is required</small>
+                                    </div>
+                                    <div class="col-5 p-0">
+                                        <select required class="form-control select-field" #month="ngModel" name="Month"
+                                            [class.is-invalid]="month.invalid && month.touched" ngModel>
+                                            <option value="" disabled>Month</option>
+                                            <option *ngFor="let Month of Months">{{Month}}</option>
+                                        </select>
+                                        <small [class.d-none]="month.valid || month.untouched" class="text-danger">
+                                            Month is required</small>
+                                    </div>
+                                    <div class="col-4 p-0">
+                                        <select required class="form-control select-field" #year="ngModel" name="Year"
+                                            [class.is-invalid]="year.invalid && year.touched" ngModel>
+                                            <option value="" disabled>Year</option>
+                                            <option *ngFor="let Year of Years">{{Year}}</option>
+        
+                                        </select>
+                                        <small [class.d-none]="year.valid || year.untouched" class="text-danger">
+                                            Year is required</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" >
+                        <label>Gender</label><br>
+                        <input  #male="ngModel" type="radio" name="Male" value="male" ngModel><label>Male</label><br>
+                        <span>
+                            <input #feMale="ngModel" type="radio" name="Female" value="Female" ngModel><label>Female</label>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-5">
+                            <label>Password<span class="req-color">*</span></label>
+                            <input required class="form-control input-field" #Password="ngModel" (change)="Pass($event)"
+                                [type]="fieldTextType ? 'text' : 'password'" id="Password" placeholder="password"
+                                value="password" name="password" [class.is-invalid]="  Password.invalid && Password.touched"
+                                [(ngModel)]="password">
+        
+                            <div *ngIf="Password.errors && (passwordError && Password.invalid && Password.touched)">
+                                <small class="text-danger" *ngIf="Password.errors.required">Password Is
+                                    Required</small>
+                                <small class="text-danger" *ngIf="Password.errors.pattern">
+                                    Must contain at least one number and one uppercase and lowercase letter,
+                                    and
+                                    at
+                                    least 8 or more
+                                    characters, Ex: Example@123 </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group m-b-25">
+                            <label>Confirm Password<span class="req-color">*</span></label>
+                            <input required class="form-control input-field"  #ConfirmPassword="ngModel"
+                                [type]="fieldTextType ? 'text' : 'password'" id="ConfirmPassword" placeholder="Confirm Password"
+                                name="ConfirmPassword" (change)="onKeyUp($event)" placeholder="Confirm Password"
+                                [class.is-invalid]="ConfirmPassword.invalid && ConfirmPassword.touched" ngModel>
+                            <!-- <span class="eyeIcon"><i class="fa" [ngClass]="{
+                                                                    'fa-eye-slash': !fieldTextType,
+                                                                    'fa-eye': fieldTextType }"
+                                    (click)="toggleFieldTextType()"></i></span> -->
+                            <small [class.d-none]=" ConfirmPassword.valid || ConfirmPassword.untouched" class="text-danger">
+                                Day is required</small>
+                            <small *ngIf="passwordError" class="text-danger">Confirm Password is not matching to Password
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="checkbox"> <small> I accept the terms and conditions</small>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group m-t-25 m-b-25">
+                            <a href="#"><button type="submit" [disabled]="RegForm.form.invalid" class="button login_btn">Register</button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
